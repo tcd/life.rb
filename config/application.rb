@@ -42,6 +42,6 @@ module Life
     # Misc.
     # ==========================================================================
 
-    # config.secret_key_base = Rails.application.credentials[Rails.env.to_sym][:secret_key_base]
+    config.secret_key_base = Rails.application.credentials.dig(Rails.env.to_sym, :secret_key_base)
   end
 end
