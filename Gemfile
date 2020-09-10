@@ -5,11 +5,13 @@ ruby "2.6.5"
 
 gem "rails", "~> 6.0.3", ">= 6.0.3.2" # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 
+gem "annotate", "~> 3.1"
+gem "bookmarks", "~> 0.2.3"
 # gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password
-# gem "image_processing", "~> 1.2" # Use Active Storage variant
-gem "flat_file", "~> 0.2.0"
+gem "flat_file", "~> 0.3.0"
 gem "gemoji", "~> 3.0" # Character information and metadata for standard and custom emoji
 gem "httparty", "~> 0.18.1" # HTTP client
+# gem "image_processing", "~> 1.2" # Use Active Storage variant
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
 gem "puma", "~> 4.1" # Use Puma as the app server
 # gem "redis", "~> 4.0" # Use Redis adapter to run Action Cable in production
@@ -23,6 +25,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "pry-rails", "~> 0.3.9"
-  gem "web-console", ">= 3.3.0" # Access an interactive console on exception pages or by calling "console" anywhere in the code.
+  gem "pry-rails", "~> 0.3.9" # Better rails console
+  gem "web-console", ">= 3.3.0" # Access an interactive console on exception pages or by calling "console" anywhere in the code
 end
