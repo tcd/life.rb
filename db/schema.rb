@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_031648) do
+ActiveRecord::Schema.define(version: 2020_09_10_023555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "bookmarks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "source"
+    t.string "title"
+    t.string "description"
+    t.text "icon"
+    t.string "url", null: false
+    t.string "tags", default: [], array: true
+    t.string "folders", default: [], array: true
+    t.datetime "created_on_browser_at"
+    t.datetime "updated_on_browser_at"
+    t.jsonb "metadata", default: "{}"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "mojis", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
