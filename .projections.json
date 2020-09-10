@@ -1,0 +1,5 @@
+{
+  "app/lib/*.rb": { "alternate": "test/lib/{}/_test.rb" },
+  "app/models/**/*.rb": { "alternate": "test/models/{}_test.rb" },
+  "app/services/services/google/calendar/*.rb": { "alternate": "test/services/google/calendar/{basename}_test.rb" }
+}
