@@ -1,7 +1,10 @@
 class TrackedTime < ApplicationRecord
 
-  # @!attribute id [rw]
-  #   @return [Integer]
+  # ==========================================================================
+  # Attributes
+  # ==========================================================================
+
+  # @!group Attributes
 
   # @!attribute description [rw]
   #   @return [String]

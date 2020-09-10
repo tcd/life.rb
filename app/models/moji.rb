@@ -11,7 +11,43 @@ class Moji < ApplicationRecord
 
   # @return [String]
   NEWEST_UNICODE_EMOJI_DATA = "https://unicode.org/Public/emoji/13.0/emoji-test.txt".freeze()
+
   # @return [String]
   NEWEST_GEMOJI_EMOJI_DATA  = "https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json".freeze()
+
+  # ==========================================================================
+  # Attributes
+  # ==========================================================================
+
+  # @!group Attributes
+
+  # @!attribute aliases
+  #   @return [Array<String>]
+
+  # @!attribute emoji
+  #   @return [String]
+
+  # @!attribute emoji_version
+  #   @return [String]
+
+  # @!attribute group
+  #   @return [String]
+
+  # @!attribute name
+  #   @return [String]
+
+  # @!attribute personal_name
+  #   @return [String]
+
+  # @!attribute sub_group
+  #   @return [String]
+
+  # @!attribute tags
+  #   @return [Array<String>]
+
+  # @!attribute unicode_version
+  #   @return [String]
+
+  # @!endgroup Attributes
 
 end
