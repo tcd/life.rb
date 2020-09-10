@@ -6,6 +6,7 @@ ruby "2.6.5"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2" # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 
 gem "annotate", "~> 3.1"
+gem "bookmark_machine", "~> 0.0.1" # Reads and writes netscape bookmark files
 gem "bookmarks", "~> 0.2.3"
 # gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password
 gem "flat_file", "~> 0.3.0"
