@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_023555) do
     t.string "url", null: false
     t.string "tags", default: [], array: true
     t.string "folders", default: [], array: true
+    t.datetime "folder_name_date"
     t.datetime "created_on_browser_at"
     t.datetime "updated_on_browser_at"
     t.jsonb "metadata", default: "{}"

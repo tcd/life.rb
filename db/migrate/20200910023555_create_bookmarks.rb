@@ -8,6 +8,7 @@ class CreateBookmarks < ActiveRecord::Migration[6.0]
       t.string("url", null: false)
       t.string("tags",    array: true, default: [])
       t.string("folders", array: true, default: [])
+      t.datetime("folder_name_date")
       t.datetime("created_on_browser_at")
       t.datetime("updated_on_browser_at")
       t.jsonb("metadata", default: "{}")
