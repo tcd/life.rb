@@ -5,10 +5,23 @@
 
 Rails.application.configure do
 
+  # ============================================================================
+  # Logging
+  # ============================================================================
+
+  if ENV["NO_SQL_LOGS"].present?()
+    config.active_record.logger = nil
+    config.active_record.verbose_query_logs = false # Highlight code that triggered database queries in logs.
+  end
+
+  # ============================================================================
+  # Misc.
+  # ============================================================================
+
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}",
   }
 
   # Show full error reports and disable caching.
