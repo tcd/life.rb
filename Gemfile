@@ -7,7 +7,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.2" # Bundle edge Rails instead: gem "rails", 
 
 gem "annotate", "~> 3.1"
 gem "bookmark_machine", "~> 0.0.1" # Reads and writes netscape bookmark files
-gem "bookmarks", "~> 0.2.3"
+# gem "bookmarks", "~> 0.2.3"
 # gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password
 gem "flat_file", "~> 0.3.0"
 gem "gemoji", "~> 3.0" # Character information and metadata for standard and custom emoji
@@ -21,11 +21,9 @@ gem "turbolinks", "~> 5" # Turbolinks makes navigating your web application fast
 gem "webpacker", "~> 4.0" # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw] # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "simplecov", "~> 0.19.0"
 end
 
 group :development do
   gem "pry-rails", "~> 0.3.9" # Better rails console
-  gem "web-console", ">= 3.3.0" # Access an interactive console on exception pages or by calling "console" anywhere in the code
 end
