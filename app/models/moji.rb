@@ -26,6 +26,7 @@ class Moji < ApplicationRecord
 
   # @!attribute emoji
   #   @return [String]
+  validates("emoji", presence: true)
 
   # @!attribute emoji_version
   #   @return [String]
