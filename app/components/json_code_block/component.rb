@@ -1,4 +1,4 @@
-class JsonCodeBlock::Component < ViewComponent::Base
+class JSONCodeBlock::Component < ViewComponent::Base
 
   # @param data [Object,Hash]
   # @return [void]
