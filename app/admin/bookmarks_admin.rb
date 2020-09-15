@@ -23,10 +23,12 @@ Trestle.resource(:bookmarks) do
       end
     end
     column(:title)
-    column(:description)
+    # column(:description)
     column(:url)
-    column(:tags)
-    column(:folders)
+    # column(:tags)
+    # column(:folders)
+    column(:folder, &:folder_string)
+    actions
   end
 
   # @param bookmark [Bookmark]
@@ -45,11 +47,7 @@ Trestle.resource(:bookmarks) do
       static_field("Updated At", bookmark.updated_at || "")
     end
     tab(:metadata) do
-      content_tag(:pre, class: "line-numbers") do
-        content_tag(:code, class: "language-json") do
-          JSON.pretty_generate(bookmark.as_json)
-        end
-      end
+      render(JsonCodeBlock::Component.new(data: bookmark.as_json))
     end
   end
 

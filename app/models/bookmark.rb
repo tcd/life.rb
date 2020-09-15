@@ -76,6 +76,10 @@ class Bookmark < ApplicationRecord
 
   # @!group Scopes
 
+  # ----------------------------------------------------------------------------
+  # Browsers
+  # ----------------------------------------------------------------------------
+
   # @!method self.chrome()
   #   @return [self]
   scope(:chrome, -> { where(source: "chrome") })
@@ -83,6 +87,22 @@ class Bookmark < ApplicationRecord
   # @!method self.firefox()
   #   @return [self]
   scope(:firefox, -> { where(source: "firefox") })
+
+  # ----------------------------------------------------------------------------
+  # Websites
+  # ----------------------------------------------------------------------------
+
+  # @!method self.github()
+  #   @return [self]
+  scope(:github, -> { where("url ILIKE 'https://github.com/%'") })
+
+  # @!method self.medium()
+  #   @return [self]
+  scope(:medium, -> { where("url ILIKE 'https://medium.com/%'") })
+
+  # @!method self.wikipedia()
+  #   @return [self]
+  scope(:wikipedia, -> { where("url ILIKE 'https://en.wikipedia.org/%'") })
 
   # @!endgroup Scopes
 
