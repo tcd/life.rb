@@ -1,0 +1,31 @@
+<% content_for(:title, "Dashboard") %>
+<%= render "header" %>
+<div class="main-content-area">
+  <div class="main-content-container">
+    <div class="main-content">
+      <h1>Models</h1>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Model</th>
+            <th scope="col">Records</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% @models.each do |model| %>
+          <tr onclick="location.href='<%= model[:link] %>'">
+            <td class="text-center"><span class="<%= model[:icon_classes] %>"></span></td>
+            <td><%= link_to(model[:title], model[:link]) %></td>
+            <td><span class="badge badge-primary"><%= model[:count]  %></span></td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
