@@ -27,3 +27,5 @@ end
 group :development do
   gem "pry-rails", "~> 0.3.9" # Better rails console
 end
+
+gem "trestle", "~> 0.9.3"

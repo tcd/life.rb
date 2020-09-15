@@ -1,0 +1,12 @@
+// This file may be used for providing additional customizations to the Trestle
+// admin. It will be automatically included within all admin pages.
+//
+// For organizational purposes, you may wish to define your customizations
+// within individual partials and `import` them here, e.g.
+//
+//    @import "trestle/custom/my_custom_css";
+//
+
+@import "./vendor/prism-vsc-dark-plus.css";
+@import "./vendor/material-design-icons-bootstrap-helper.css";
+@import "./vendor/materialdesignicons.css";
