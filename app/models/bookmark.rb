@@ -1,6 +1,28 @@
 # Bookmarks from Chrome & Firefox
 class Bookmark < ApplicationRecord
 
+  include Lib::Helpers::Stripper
+
+  include PgSearch::Model
+
+  pg_search_scope(
+    :pg_search,
+    against: [
+      :url,
+      :title,
+      :description,
+      :tags,
+      :folders,
+    ],
+    using: {
+      tsearch: {
+        # prefix: true,
+        any_word: true,
+        tsvector_column: "tsv",
+      },
+    },
+  )
+
   # ==========================================================================
   # Attributes
   # ==========================================================================
@@ -31,9 +53,11 @@ class Bookmark < ApplicationRecord
 
   # @!attribute tags
   #   @return [Array<String>]
+  attribute(:tags, :string, array: true)
 
   # @!attribute folders
   #   @return [Array<String>]
+  attribute(:folders, :string, array: true)
 
   # @!attribute folder_name_date
   #   @return [Time]
@@ -69,17 +93,22 @@ class Bookmark < ApplicationRecord
   # @param path [String,Pathname]
   # @param source [String]
   # @return [void]
-  def self.from_netscape_file(path, source)
+  def self.from_netscape_file(path, source, tags: [])
     html      = IO.read(path)
     parser    = BookmarkMachine::NetscapeParser.new(html)
     bookmarks = parser.bookmarks
     bookmarks.each do |bookmark|
+      if bookmark.tags.blank?
+        bookmark_tags = tags
+      else
+        bookmark_tags = bookmark.tags + tags
+      end
       self.create!(
         source:                source,
         url:                   bookmark.url,
         title:                 bookmark.name,
         folders:               bookmark.folders,
-        tags:                  bookmark.tags,
+        tags:                  bookmark_tags,
         # icon:                  bookmark.icon,       # Wasted space
         created_on_browser_at: bookmark.created_at,
         updated_on_browser_at: bookmark.updated_at,
@@ -94,6 +123,11 @@ class Bookmark < ApplicationRecord
   # @return [String]
   def display_name()
     return self.title
+  end
+
+  # @return [String,nil]
+  def folder_string()
+    return self.folders.join("/")
   end
 
 end
