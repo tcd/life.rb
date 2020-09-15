@@ -1,8 +1,13 @@
 class ApplicationRecord < ActiveRecord::Base
 
+  include Lib::Helpers::Stripper
+
   self.abstract_class = true
 
   self.implicit_order_column = "created_at"
+
+  # https://github.com/rubiety/nilify_blanks
+  nilify_blanks()
 
   # ==========================================================================
   # Attributes
