@@ -17,15 +17,17 @@ gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
 gem "puma", "~> 4.1" # Use Puma as the app server
 # gem "redis", "~> 4.0" # Use Redis adapter to run Action Cable in production
 gem "sass-rails", ">= 6" # Use SCSS for stylesheets
+gem "trestle", "~> 0.9.3"
 gem "turbolinks", "~> 5" # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem "view_component", "~> 2.19"
 gem "webpacker", "~> 4.0" # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 group :development, :test do
-  gem "simplecov", "~> 0.19.0"
-end
-
-group :development do
+  gem "pry", "~> 0.13.1"
   gem "pry-rails", "~> 0.3.9" # Better rails console
 end
 
-gem "trestle", "~> 0.9.3"
+group :test do
+  gem "capybara", "~> 3.33"
+  gem "simplecov", "~> 0.19.0"
+end
