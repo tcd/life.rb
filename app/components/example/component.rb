@@ -1,4 +1,4 @@
-class ExampleComponent < ViewComponent::Base
+class Example::Component < ViewComponent::Base
   def initialize(title:, content:)
     @title = title
     @content = content
