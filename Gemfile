@@ -6,10 +6,9 @@ ruby "2.6.5"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2" # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 
 gem "bookmark_machine", "~> 0.0.1" # Reads and writes netscape bookmark files
-# gem "bookmarks", "~> 0.2.3"
 # gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password
 gem "flat_file", "~> 0.3.0" # Convenience methods for reading CSV, TSV, & JSON files
-gem "gemoji", "~> 3.0" # Character information and metadata for standard and custom emoji
+gem "gemoji", "~> 4.0.0.rc2" # Character information and metadata for standard and custom emoji
 gem "httparty", "~> 0.18.1" # HTTP client
 # gem "image_processing", "~> 1.2" # Use Active Storage variant
 gem "lograge" # Tame Rails' multi-line logging into a single line per request
@@ -28,11 +27,11 @@ gem "webpacker", "~> 4.0" # Transpile app-like JavaScript. Read more: https://gi
 group :development, :test do
   gem "dotenv-rails", "~> 2.7" # Load .env files
   gem "pry", "~> 0.13.1" # Better rails console
-  gem "pry-rails", "~> 0.3.9" # Better rails console
 end
 
 group :development do
   gem "annotate", "~> 3.1" # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema
+  gem "pry-rails", "~> 0.3.9" # Better rails console
 end
 
 group :test do

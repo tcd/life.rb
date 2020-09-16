@@ -83,7 +83,7 @@ GEM
     erubi (1.9.0)
     ffi (1.13.1)
     flat_file (0.3.0)
-    gemoji (3.0.1)
+    gemoji (4.0.0.rc2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.18.1)
@@ -235,7 +235,7 @@ DEPENDENCIES
   capybara (~> 3.33)
   dotenv-rails (~> 2.7)
   flat_file (~> 0.3.0)
-  gemoji (~> 3.0)
+  gemoji (~> 4.0.0.rc2)
   httparty (~> 0.18.1)
   lograge
   nilify_blanks (~> 1.4)

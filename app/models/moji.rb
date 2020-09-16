@@ -17,9 +17,6 @@ class Moji < ApplicationRecord
   # @return [String]
   NEWEST_UNICODE_EMOJI_DATA = "https://unicode.org/Public/emoji/13.0/emoji-test.txt".freeze()
 
-  # @return [String]
-  NEWEST_GEMOJI_EMOJI_DATA  = "https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json".freeze()
-
   # @return [Regexp]
   UNICODE_DATA_PATTERN = /^(?<code_points>([[:xdigit:]]{4,5}\s)+)\s+; (?<status>\S+)\s+# (?<emoji>\S+)\s+E(?<emoji_version>\S+)\s(?<name>.*)$/.freeze()
 
@@ -33,7 +30,6 @@ class Moji < ApplicationRecord
   def init()
     self.unicode_name&.downcase!
     self.name&.downcase!
-    super()
   end
 
   # ==========================================================================
@@ -56,11 +52,10 @@ class Moji < ApplicationRecord
 
   # @!attribute unicode_code_point
   #   @return [String]
-  validates("unicode_code_point", presence: true)
 
   # @!attribute unicode_code_points
   #   @return [Array<String>]
-  attribute(:unicode_code_points, :string, array: true)
+  attribute("unicode_code_points", :string, array: true)
 
   # @!attribute status [rw]
   #   One of the following values:
@@ -114,5 +109,85 @@ class Moji < ApplicationRecord
   attribute(:aliases, :string, array: true)
 
   # @!endgroup Attributes
+
+  # ============================================================================
+  # Class Methods
+  # ============================================================================
+
+  # @return [String]
+  def self.official_unicode_emoji_data()
+    return HTTParty.get(NEWEST_UNICODE_EMOJI_DATA)
+  end
+
+  # @param data [String]
+  # @return [void]
+  def self.parse_emoji_data(data = official_unicode_emoji_data())
+    current_group    = nil
+    current_subgroup = nil
+    lines            = data.split("\n")
+    important_lines  = lines[lines.find_index("# group: Smileys & Emotion")..-1]
+
+    important_lines.each do |line|
+
+      if !current_group.blank?() &&
+         !current_subgroup.blank?()
+
+        if (matches = line.match(UNICODE_DATA_PATTERN))
+          code_points = matches[:code_points].strip.split
+          # code_point  = (code_points.length == 1) ? code_points.first : nil
+          self.create!(
+            # unicode_code_point:  code_point,
+            unicode_code_points: code_points,
+            group:               current_group,
+            sub_group:           current_subgroup,
+            unicode_name:        matches[:name].strip,
+            emoji:               matches[:emoji].strip,
+            status:              matches[:status].strip,
+            emoji_version:       matches[:emoji_version].strip,
+          )
+          next
+        end
+      end
+
+      if current_group.nil? &&
+         line.length > 9 &&
+         line[0..8] == "# group: "
+
+        current_group = line[9..-1]
+        next
+      end
+
+      if current_subgroup.nil? &&
+         line.length > 12 &&
+         line[0..11] == "# subgroup: "
+
+        current_subgroup = line[12..-1]
+        next
+      end
+
+      if !current_subgroup.nil? && line == ""
+
+        current_subgroup = nil
+        next
+      end
+
+      if !current_group.nil? && line.match?("# #{current_group}.*")
+
+        current_group = nil
+        next
+      end
+
+    end
+    return nil
+  end
+
+  # ============================================================================
+  # Instance Methods
+  # ============================================================================
+
+  # @return [String]
+  def display_name()
+    return self.personal_name || self.unicode_name
+  end
 
 end
