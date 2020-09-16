@@ -62,6 +62,16 @@ class Moji < ApplicationRecord
   #   @return [Array<String>]
   attribute(:unicode_code_points, :string, array: true)
 
+  # @!attribute status [rw]
+  #   One of the following values:
+  #
+  #   - *component* - An Emoji_Component, excluding Regional_Indicators, ASCII, and non-Emoji
+  #   - *fully-qualified* - A fully-qualified emoji (see ED-18 in UTS #51), excluding Emoji_Component
+  #   - *minimally-qualified* - A minimally-qualified emoji (see ED-18a in UTS #51)
+  #   - *unqualified* - A unqualified emoji (See ED-19 in UTS #51)
+  #
+  #   @return [String]
+
   # @!attribute group
   #   @return [String]
 

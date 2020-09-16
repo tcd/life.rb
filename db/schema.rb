@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_230614) do
+ActiveRecord::Schema.define(version: 2020_09_16_014153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_230614) do
     t.string "unicode_code_point"
     t.string "unicode_code_points", default: [], array: true
     t.string "unicode_name"
+    t.string "status"
   end
 
   create_table "snippets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
