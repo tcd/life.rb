@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_015513) do
+ActiveRecord::Schema.define(version: 2020_09_15_230614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 2020_09_15_015513) do
     t.string "tags", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
+    t.string "unicode_code_point"
+    t.string "unicode_code_points", default: [], array: true
+    t.string "unicode_name"
   end
 
   create_table "snippets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -73,6 +77,12 @@ ActiveRecord::Schema.define(version: 2020_09_15_015513) do
     t.jsonb "metadata", default: "{}"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "timezone"
+    t.string "employer"
+    t.string "client"
+    t.string "project"
+    t.string "task"
+    t.integer "total_seconds"
   end
 
 end
