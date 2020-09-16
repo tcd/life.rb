@@ -47,7 +47,7 @@ Trestle.resource(:bookmarks) do
       static_field("Updated At", bookmark.updated_at || "")
     end
     tab(:metadata) do
-      render(JsonCodeBlock::Component.new(data: bookmark.as_json))
+      render(JSONCodeBlock::Component.new(data: bookmark.as_json))
     end
   end
 
