@@ -20,9 +20,10 @@ gem "puma", "~> 4.1" # Use Puma as the app server
 gem "sass-rails", ">= 6" # Use SCSS for stylesheets
 gem "trestle", "~> 0.9.3" # Admin dashboard
 gem "trestle-active_storage", "~> 3.0" # ActiveStorage integration for Trestle
-gem "trestle-search", "~> 0.4.2" # Search plugin for Trestlegem "turbolinks", "~> 5" # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem "view_component", "~> 2.19"
-gem "webpacker", "~> 4.0" # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem "trestle-search", "~> 0.4.2" # Search plugin for Trestle
+gem "turbolinks", "~> 5" # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem "view_component", "~> 2.19" # https://github.com/github/view_component
+gem "webpacker", "~> 4.0" # Transpile app-like JavaScript
 
 group :development, :test do
   gem "dotenv-rails", "~> 2.7" # Load .env files

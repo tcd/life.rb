@@ -211,6 +211,9 @@ GEM
       trestle (~> 0.9.0, >= 0.9.3)
     trestle-search (0.4.2)
       trestle (~> 0.9.0, >= 0.9.3)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     view_component (2.19.0)
@@ -250,6 +253,7 @@ DEPENDENCIES
   trestle (~> 0.9.3)
   trestle-active_storage (~> 3.0)
   trestle-search (~> 0.4.2)
+  turbolinks (~> 5)
   view_component (~> 2.19)
   webpacker (~> 4.0)
 
