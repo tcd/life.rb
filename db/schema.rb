@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_023635) do
+ActiveRecord::Schema.define(version: 2020_09_16_032932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 2020_09_16_023635) do
     t.string "status"
     t.float "unicode_version_float"
     t.float "emoji_version_float"
+    t.string "github_shortcode"
+    t.string "slack_shortcode"
+    t.string "teams_shortcode"
+    t.string "personal_shortcode"
   end
 
   create_table "snippets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

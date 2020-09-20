@@ -98,6 +98,23 @@ class Moji < ApplicationRecord
   #   @return [String]
 
   # @!attribute personal_name
+  #   What I call the emoji.
+  #   @return [String]
+
+  # @!attribute personal_shortcode
+  #   Shortcut that I use on Alfred.
+  #   @return [String]
+
+  # @!attribute github_shortcode
+  #   Shortcut on GitHub.
+  #   @return [String]
+
+  # @!attribute slack_shortcode
+  #   Shortcut on Slack.
+  #   @return [String]
+
+  # @!attribute teams_shortcode
+  #   Shortcut on Microsoft Teams.
   #   @return [String]
 
   # @!attribute tags
@@ -181,6 +198,16 @@ class Moji < ApplicationRecord
     return nil
   end
 
+  # @return [void]
+  def self.add_gemoji_data()
+    self.all.each do |moji|
+      if (emoji = Emoji.find_by_unicode(moji.unicode_string))
+
+      end
+    end
+
+  end
+
   # ============================================================================
   # Instance Methods
   # ============================================================================
@@ -188,6 +215,11 @@ class Moji < ApplicationRecord
   # @return [String]
   def display_name()
     return self.personal_name || self.unicode_name
+  end
+
+  # @return [String]
+  def unicode_string()
+    return self.unicode_code_points.map{ |cp| cp.to_i(16) }.pack("U*")
   end
 
 end
