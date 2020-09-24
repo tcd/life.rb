@@ -5,12 +5,13 @@ ruby "2.6.5"
 
 gem "rails", "~> 6.0.3", ">= 6.0.3.2" # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 
+gem "aws-sdk-s3", require: false # Use S3 with ActiveStorage
 gem "bookmark_machine", "~> 0.0.1" # Reads and writes netscape bookmark files
 # gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password
 gem "flat_file", "~> 0.3.0" # Convenience methods for reading CSV, TSV, & JSON files
 gem "gemoji", "~> 4.0.0.rc2" # Character information and metadata for standard and custom emoji
 gem "httparty", "~> 0.18.1" # HTTP client
-# gem "image_processing", "~> 1.2" # Use Active Storage variant
+gem "image_processing", "~> 1.2" # Use Active Storage variant
 gem "lograge" # Tame Rails' multi-line logging into a single line per request
 gem "nilify_blanks", "~> 1.4" # Automatically convert blank values to nil (So we don't junk up our DB)
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
