@@ -11,7 +11,7 @@ Trestle.resource(:mojis) do
     column(:emoji_version, sort: :emoji_version_float)
   end
 
-  # # @param moji [Moji]
+  # @param moji [Moji]
   form do |moji|
 
     tab(:emoji) do
