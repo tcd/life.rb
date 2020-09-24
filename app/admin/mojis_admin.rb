@@ -6,30 +6,31 @@ Trestle.resource(:mojis) do
 
   table do
     column(:emoji, align: :center)
-    column(:name, truncate: false)
-    column(:category, align: :center)
-    column(:unicode_version, align: :center)
+    column(:display_name, header: "Name", truncate: false)
+    column(:status)
+    column(:emoji_version, sort: :emoji_version_float)
   end
 
   # # @param moji [Moji]
   form do |moji|
 
     tab(:emoji) do
-      # if moji.new_record?
-      # else
-      #   static_field("Emoji", moji.emoji || "")
-      # end
-      text_field(:emoji)
-      text_field(:unicode_code_point)
+      # text_field(:emoji)
+      form_group(:unicode, label: false) do
+        content_tag(:h1) { "Unicode" }
+      end
+      static_field(:unicode_name)
+      static_field(:unicode_code_points)
+      text_field(:unicode_version)
+      text_field(:emoji_version)
       divider()
-      # text_field(:name)
-      text_field(:unicode_name)
+      form_group(:personal, label: false) do
+        content_tag(:h1) { "Personal" }
+      end
       text_field(:personal_name)
       divider()
       text_field(:category)
       divider()
-      text_field(:unicode_version)
-      text_field(:emoji_version)
     end
 
     tab(:metadata) do
@@ -38,7 +39,7 @@ Trestle.resource(:mojis) do
 
     sidebar do
       form_group(:name, label: false, class: "text-center") do
-        content_tag(:h1) { moji.name }
+        content_tag(:h1) { moji.display_name }
       end
       form_group(:emoji, label: false, class: "text-center") do
         content_tag(:span, class: "big-emoji") { moji.emoji }
