@@ -1,8 +1,6 @@
 # Bookmarks from Chrome & Firefox
 class Bookmark < ApplicationRecord
 
-  include Lib::Helpers::Stripper
-
   include PgSearch::Model
 
   pg_search_scope(
