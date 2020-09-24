@@ -14,6 +14,7 @@ gem "httparty", "~> 0.18.1" # HTTP client
 gem "image_processing", "~> 1.2" # Use Active Storage variant
 gem "lograge" # Tame Rails' multi-line logging into a single line per request
 gem "lograge-sql", "~> 1.2"
+gem "money-rails", "~> 1.13" # Helper for money values
 gem "nilify_blanks", "~> 1.4" # Automatically convert blank values to nil (So we don't junk up our DB)
 gem "ougai", "~> 1.8" # Better logging
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
