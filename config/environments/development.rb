@@ -1,3 +1,24 @@
+class AwesomeLogger < Ougai::Logger
+
+  include ActiveSupport::LoggerThreadSafeLevel
+  include ActiveSupport::LoggerSilence
+
+  # @return [void]
+  def initialize(*args)
+    super
+    # after_initialize if respond_to?(:after_initialize)
+  end
+
+  def create_formatter()
+    if Rails.env.development?() || Rails.env.test?()
+      Ougai::Formatters::Pino.new()
+    else
+      Ougai::Formatters::Buqyan.new()
+    end
+  end
+
+end
+
 Rails.application.configure do
 
   # ============================================================================
@@ -8,6 +29,8 @@ Rails.application.configure do
     config.active_record.logger = nil
     config.active_record.verbose_query_logs = false # Highlight code that triggered database queries in logs.
   end
+
+  config.logger = ActiveSupport::TaggedLogging.new(AwesomeLogger.new(STDOUT))
 
   # ============================================================================
   # Misc.

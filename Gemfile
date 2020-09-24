@@ -13,7 +13,9 @@ gem "gemoji", "~> 4.0.0.rc2" # Character information and metadata for standard a
 gem "httparty", "~> 0.18.1" # HTTP client
 gem "image_processing", "~> 1.2" # Use Active Storage variant
 gem "lograge" # Tame Rails' multi-line logging into a single line per request
+gem "lograge-sql", "~> 1.2"
 gem "nilify_blanks", "~> 1.4" # Automatically convert blank values to nil (So we don't junk up our DB)
+gem "ougai", "~> 1.8" # Better logging
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
 gem "pg_search", "~> 2.3" # Define ActiveRecord scopes that take advantage of PostgreSQL's full text search
 gem "puma", "~> 4.1" # Use Puma as the app server
@@ -32,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "amazing_print", "~> 1.2"
   gem "annotate", "~> 3.1" # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema
   gem "pry-rails", "~> 0.3.9" # Better rails console
 end

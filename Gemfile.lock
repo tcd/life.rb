@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    amazing_print (1.2.1)
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
@@ -128,6 +129,9 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
+    lograge-sql (1.2.0)
+      activerecord (>= 4, < 7.0)
+      lograge (~> 0.4)
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -151,6 +155,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    oj (3.10.14)
+    ougai (1.8.5)
+      oj (~> 3.10)
     pg (1.2.3)
     pg_search (2.3.2)
       activerecord (>= 5.2)
@@ -256,6 +263,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazing_print (~> 1.2)
   annotate (~> 3.1)
   aws-sdk-s3
   bookmark_machine (~> 0.0.1)
@@ -266,7 +274,9 @@ DEPENDENCIES
   httparty (~> 0.18.1)
   image_processing (~> 1.2)
   lograge
+  lograge-sql (~> 1.2)
   nilify_blanks (~> 1.4)
+  ougai (~> 1.8)
   pg (>= 0.18, < 2.0)
   pg_search (~> 2.3)
   pry (~> 0.13.1)

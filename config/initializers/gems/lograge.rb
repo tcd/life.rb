@@ -1,29 +1,40 @@
-# require "lograge/sql/extension"
+require "lograge/sql/extension"
 
 Rails.application.configure do
+
   config.lograge.enabled = true
+  config.lograge.formatter = Class.new do |fmt|
+    def fmt.call(data)
+      return {
+        msg: "Request",
+        request: data.except(:sql_queries_count),
+      }
+    end
+  end
+  # config.lograge.formatter = Lograge::Formatters::Json.new()
   config.lograge.ignore_actions = ["HealthcheckController#index"]
   config.lograge.custom_options = lambda do |event|
-    {
-      time: Time.zone.now(),
-      # level: event.payload[:level],
-      # exception: event.payload[:exception], # ["ExceptionClass", "the message"]
-      # exception_object: event.payload[:exception_object], # the exception instance
-    }
+    if !event.payload[:exception].blank?()
+      {
+        exception: {
+          class:   event.payload[:exception]&.[](0),
+          message: event.payload[:exception]&.[](1),
+          object:  event.payload[:exception_object],
+        },
+      }
+    end
   end
 
-  # # Instead of extracting event as Strings, extract as Hash.
-  # # You can also extract additional fields to add to the formatter
-  # config.lograge_sql.extract_event = proc do |event|
-  #   {
-  #     name: event.payload[:name],
-  #     duration: event.duration.to_f.round(2),
-  #     sql: event.payload[:sql],
-  #   }.to_json()
-  # end
-  # # Format the array of extracted events
-  # config.lograge_sql.formatter = proc do |sql_queries|
-  #   sql_queries
-  # end
+  # Format the array of extracted events
+  config.lograge_sql.formatter = proc { |sql_queries| sql_queries }
+
+  # Instead of extracting event as Strings, extract as Hash.
+  config.lograge_sql.extract_event = proc do |event|
+    {
+      # name: event.payload[:name],
+      duration: event.duration.to_f.round(2),
+      sql: event.payload[:sql],
+    }
+  end
 
 end
