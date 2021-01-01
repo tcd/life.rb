@@ -1,6 +1,6 @@
-if Rails.env.development?
-  module ActiveSupport::TaggedLogging::Formatter
+if Rails.env.development?()
 
+  module ActiveSupport::TaggedLogging::Formatter
     def call(severity, time, progname, data)
       new_data = {
         level: severity,
@@ -20,6 +20,6 @@ if Rails.env.development?
       new_data[:tags] = tags if tags.present?
       _call(severity, time, progname, new_data)
     end
-
   end
+
 end

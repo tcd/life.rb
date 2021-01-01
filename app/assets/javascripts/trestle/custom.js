@@ -7,3 +7,10 @@
 //= require "./vendor/prism.json.js"
 
 console.log("trestle loaded")
+
+const cleave_options = {
+    prefix: "$",
+    numeral: true,
+    numeralThousandsGroupStyle: "thousand",
+    rawValueTrimPrefix: true,
+}

@@ -1,4 +1,4 @@
-class Snippet < ApplicationRecord
+class Account < ApplicationRecord
 
   # ==========================================================================
   # Attributes
@@ -6,29 +6,33 @@ class Snippet < ApplicationRecord
 
   # @!group Attributes
 
-  # @!attribute name [rw]
+  # @!attribute name
   #   @return [String]
 
-  # @!attribute description [rw]
+  # @!attribute bank
   #   @return [String]
+  validates("bank", presence: true)
 
-  # @!attribute content [rw]
+  # @!attribute account_number
   #   @return [String]
-  validates(:content, presence: true)
+  validates("account_number", presence: true)
 
-  # @!attribute trigger [rw]
-  #   @return [String]
-
-  # @!attribute emoji [rw]
+  # @!attribute checking
   #   @return [Boolean]
 
-  # @!attribute textmate [rw]
+  # @!attribute credit
   #   @return [Boolean]
 
-  # @!attribute for_use_with [rw]
-  #   @return [Array<String>]
+  # @!attribute debit
+  #   @return [Boolean]
 
-  # @!attribute metadata [rw]
+  # @!attribute savings
+  #   @return [Boolean]
+
+  # @!attribute person_id
+  #   @return [String<UUID>]
+
+  # @!attribute metadata
   #   @return [Hash]
 
   # @!endgroup Attributes
@@ -39,7 +43,7 @@ class Snippet < ApplicationRecord
 
   # @return [String]
   def self.icon_class()
-    return "mdi mdi-code-braces"
+    return "mdi mdi-bank"
   end
 
 end

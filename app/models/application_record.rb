@@ -27,6 +27,20 @@ class ApplicationRecord < ActiveRecord::Base
   # @!endgroup Attributes
 
   # ==========================================================================
+  # Class Methods
+  # ==========================================================================
+
+  # @return [String]
+  def self.display_name()
+    return self.name.pluralize
+  end
+
+  # @return [String]
+  def self.icon_class()
+    raise NotImplementedError
+  end
+
+  # ==========================================================================
   # Instance Methods
   # ==========================================================================
 

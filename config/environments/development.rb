@@ -6,14 +6,13 @@ class AwesomeLogger < Ougai::Logger
   # @return [void]
   def initialize(*args)
     super
-    # after_initialize if respond_to?(:after_initialize)
   end
 
   def create_formatter()
     if Rails.env.development?() || Rails.env.test?()
-      Ougai::Formatters::Pino.new()
+      Ougai::Formatters::Readable.new()
     else
-      Ougai::Formatters::Buqyan.new()
+      Ougai::Formatters::Bunyan.new()
     end
   end
 
@@ -24,13 +23,16 @@ Rails.application.configure do
   # ============================================================================
   # Logging
   # ============================================================================
+  config.log_level = :debug
 
-  if ENV["NO_SQL_LOGS"].present?()
-    config.active_record.logger = nil
-    config.active_record.verbose_query_logs = false # Highlight code that triggered database queries in logs.
-  end
+  log_file = Rails.root.join("log", "development.log")
+  logger = AwesomeLogger.new(STDOUT)
+  logger.level = Logger::DEBUG
+  error_logger = Ougai::Logger.new(log_file)
+  error_logger.level = Logger::DEBUG
+  logger.extend(Ougai::Logger.broadcast(error_logger))
 
-  config.logger = ActiveSupport::TaggedLogging.new(AwesomeLogger.new(STDOUT))
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
 
   # ============================================================================
   # Misc.

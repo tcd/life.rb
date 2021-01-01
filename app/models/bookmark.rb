@@ -108,6 +108,11 @@ class Bookmark < ApplicationRecord
   # Class Methods
   # ============================================================================
 
+  # @return [String]
+  def self.icon_class()
+    return "mdi mdi-bookmark-multiple"
+  end
+
   # @param path [String,Pathname]
   # @param source [String]
   # @return [void]

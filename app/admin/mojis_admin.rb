@@ -1,7 +1,7 @@
 Trestle.resource(:mojis) do
 
   menu do
-    item(:mojis, icon: "mdi mdi-emoticon-cool")
+    item(:emoji, icon: "mdi mdi-emoticon-cool")
   end
 
   table do

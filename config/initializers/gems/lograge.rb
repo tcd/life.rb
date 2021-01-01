@@ -11,7 +11,6 @@ Rails.application.configure do
       }
     end
   end
-  # config.lograge.formatter = Lograge::Formatters::Json.new()
   config.lograge.ignore_actions = ["HealthcheckController#index"]
   config.lograge.custom_options = lambda do |event|
     if !event.payload[:exception].blank?()

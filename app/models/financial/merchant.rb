@@ -1,4 +1,5 @@
-class Snippet < ApplicationRecord
+# An entity that we give money in exchange for goods & services.
+class Merchant < ApplicationRecord
 
   # ==========================================================================
   # Attributes
@@ -6,29 +7,23 @@ class Snippet < ApplicationRecord
 
   # @!group Attributes
 
-  # @!attribute name [rw]
+  # @!attribute name
+  #   @return [String]
+  validates("name", presence: true, uniqueness: true)
+
+  # @!attribute official_name
   #   @return [String]
 
-  # @!attribute description [rw]
+  # @!attribute description
   #   @return [String]
 
-  # @!attribute content [rw]
-  #   @return [String]
-  validates(:content, presence: true)
-
-  # @!attribute trigger [rw]
+  # @!attribute website
   #   @return [String]
 
-  # @!attribute emoji [rw]
-  #   @return [Boolean]
+  # @!attribute category
+  #   @return [String]
 
-  # @!attribute textmate [rw]
-  #   @return [Boolean]
-
-  # @!attribute for_use_with [rw]
-  #   @return [Array<String>]
-
-  # @!attribute metadata [rw]
+  # @!attribute metadata
   #   @return [Hash]
 
   # @!endgroup Attributes
@@ -39,7 +34,7 @@ class Snippet < ApplicationRecord
 
   # @return [String]
   def self.icon_class()
-    return "mdi mdi-code-braces"
+    return "mdi mdi-store"
   end
 
 end

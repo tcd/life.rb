@@ -132,6 +132,11 @@ class Moji < ApplicationRecord
   # ============================================================================
 
   # @return [String]
+  def self.icon_class()
+    return "mdi mdi-emoticon-cool"
+  end
+
+  # @return [String]
   def self.official_unicode_emoji_data()
     return HTTParty.get(NEWEST_UNICODE_EMOJI_DATA)
   end

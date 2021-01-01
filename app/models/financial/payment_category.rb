@@ -1,4 +1,4 @@
-class Snippet < ApplicationRecord
+class PaymentCategory < ApplicationRecord
 
   # ==========================================================================
   # Attributes
@@ -8,28 +8,7 @@ class Snippet < ApplicationRecord
 
   # @!attribute name [rw]
   #   @return [String]
-
-  # @!attribute description [rw]
-  #   @return [String]
-
-  # @!attribute content [rw]
-  #   @return [String]
-  validates(:content, presence: true)
-
-  # @!attribute trigger [rw]
-  #   @return [String]
-
-  # @!attribute emoji [rw]
-  #   @return [Boolean]
-
-  # @!attribute textmate [rw]
-  #   @return [Boolean]
-
-  # @!attribute for_use_with [rw]
-  #   @return [Array<String>]
-
-  # @!attribute metadata [rw]
-  #   @return [Hash]
+  validates("name", presence: true, uniqueness: true)
 
   # @!endgroup Attributes
 
@@ -39,7 +18,7 @@ class Snippet < ApplicationRecord
 
   # @return [String]
   def self.icon_class()
-    return "mdi mdi-code-braces"
+    return "mdi mdi-tag"
   end
 
 end
